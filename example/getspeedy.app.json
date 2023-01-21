@@ -1,0 +1,436 @@
+{
+	"info": {
+		"_postman_id": "9fe8d1d2-a8ea-4ec4-a5f4-3b4a7f785bd4",
+		"name": "getspeedy.app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13223274"
+	},
+	"item": [
+		{
+			"name": "Getters",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3023/uri/rest/sample/tiger/employee?version=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"uri",
+								"rest",
+								"sample",
+								"tiger",
+								"employee"
+							],
+							"query": [
+								{
+									"key": "version",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Factorial JS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "!{ name }!\nfactorial\n\n!{ num }!\n12\n\n!{ lang }!\njs\n\n!{ version }!\n0.1"
+						},
+						"url": {
+							"raw": "localhost:3023/uri/func/factorial",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"uri",
+								"func",
+								"factorial"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fibonacci Tengo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "!{ name }!\nfib\n\n!{ version }!\n1\n\n!{ lang }!\ntengo\n\n!{ num }!\n17"
+						},
+						"url": {
+							"raw": "localhost:3023/uri/func/fib",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"uri",
+								"func",
+								"fib"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Emp's Name Reversed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3023/uri/rest/sample/tiger/employee/func?version=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"uri",
+								"rest",
+								"sample",
+								"tiger",
+								"employee",
+								"func"
+							],
+							"query": [
+								{
+									"key": "version",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Active Employees ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3023/uri/rest/sample/tiger/employee?version=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"uri",
+								"rest",
+								"sample",
+								"tiger",
+								"employee"
+							],
+							"query": [
+								{
+									"key": "version",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swapname JS Func",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "!{ name }!\nWiss Jane\n\n!{ lang }! \njs\n\n!{ version }! \n1\n"
+						},
+						"url": {
+							"raw": "localhost:3023/uri/func/sample/tiger/swapname",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"uri",
+								"func",
+								"sample",
+								"tiger",
+								"swapname"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Definitions",
+			"item": [
+				{
+					"name": "New Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "!{ uri }!\nsample/tiger/employee\n\n!{ do }!\nINSERT INTO tiger.employee(name, doj) VALUES ('?:name', NOW()) RETURNING id;\n\n!{ version }!\n1\n\n!{ method }!\npost"
+						},
+						"url": {
+							"raw": "localhost:3023/rest",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"rest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Employees",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "!{ uri }!\nsample/tiger/employee\n\n!{ do }!\nSELECT * FROM tiger.employee;\n\n!{ version }!\n1\n\n!{ method }!\nget"
+						},
+						"url": {
+							"raw": "localhost:3023/rest",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"rest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Factorial JS Func",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "!{ uri }!\nfactorial\n\n!{ name }!\nfactorial\n\n!{ do }!\nfunction fact(n) {\n    if(n == 0 || n == 1) {\n        return 1; \n    } else {\n        return n * fact(n - 1) \n    }\n}\n\nfunction factorial(m) {\n    let n = m.num;\n    m.num = fact(n); \n} \n\nfactorial(args)\n\n!{ lang }!\njs\n\n!{ version }!\n0.1"
+						},
+						"url": {
+							"raw": "localhost:3023/func",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"func"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read All active Emps",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " !{ uri }! \n sample/tiger/employee/all\n\n !{ do }! \n SELECT * FROM tiger.employee WHERE active = true;\n\n !{ version }! \n 1\n\n !{ method }! \n get\n"
+						},
+						"url": {
+							"raw": "localhost:3023/rest",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"rest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fibonacci Tengo Func",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "!{ uri }!\nfib\n\n!{ name }!\nfibannoci\n\n!{ do }!\nfib := func(x){\n    if x <= 1 {\n        return x\n    }\n    \n    return fib(x-1) + fib(x-2)\n}\n\nfact := func(){\n    args.num = fib(int(args.num))\n} \n\nfact()\n\n!{ lang }!\ntengo\n\n!{ version }!\n1"
+						},
+						"url": {
+							"raw": "localhost:3023/func",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"func"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reverse JS Func",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "!{ uri }! \nsample/tiger/reversename\n\n!{ name }! \nreversename\n\n!{ do }! \nfunction swap(a) { \n    var c = a['name'].split(' '); \n    a['name'] = c[1] + ' ' + c[0];\n} \n\nfunction rearrange(m) { \n    m.forEach(swap); \n    \n    return m; \n} \n\nfunction extract(r) { \n    var m = JSON.parse(r['result']); \n    r['result'] = JSON.stringify(rearrange(m));\n} \n\nextract(args)\n\n!{ lang }! \njs\n\n!{ version }! \n1"
+						},
+						"url": {
+							"raw": "localhost:3023/func",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"func"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Employee Before Func",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "!{ uri }! \nsample/tiger/employee/func/before\n\n!{ do }! \nINSERT INTO tiger.employee(name, doj) VALUES ('?:name', NOW()) RETURNING id;\n\n!{ version }! \n1\n\n!{ method }! \npost \n\n!{ before }! \nsample/tiger/swapname \n\n!{ blang }! \njs\n\n!{ bver }! \n1"
+						},
+						"url": {
+							"raw": "localhost:3023/rest",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"rest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swap Name JS Func",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "!{ uri }! \nsample/tiger/swapname\n\n!{ name }! \nswapname\n\n!{ do }! \nfunction swap(a) { \n    var c = a['name'].split(' ');  \n    a['name'] = c[1] + ' ' + c[0];\n} \n\nswap(args);\n\n!{ lang }!\njs\n\n!{ version }! \n1\n"
+						},
+						"url": {
+							"raw": "localhost:3023/func",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"func"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Emp's Name Reversed",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " !{ uri }! \n sample/tiger/employee/func\n\n !{ do }! \n SELECT * FROM tiger.employee WHERE active = true;\n\n !{ version }! \n 1\n\n !{ method }! \n get\n\n !{ after }! \n sample/tiger/reversename\n\n !{ alang }! \n js\n\n!{ aver }! \n1"
+						},
+						"url": {
+							"raw": "localhost:3023/rest",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"rest"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create/Insert",
+			"item": [
+				{
+					"name": "New Employee Before Func",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "!{ name }!\nJackson Tike\n\n!{ version }!\n1"
+						},
+						"url": {
+							"raw": "localhost:3023/uri/rest/sample/tiger/employee/func/before",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"uri",
+								"rest",
+								"sample",
+								"tiger",
+								"employee",
+								"func",
+								"before"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "!{ name }!\nKen Thompson\n\n!{ version }!\n1"
+						},
+						"url": {
+							"raw": "localhost:3023/uri/rest/sample/tiger/employee",
+							"host": [
+								"localhost"
+							],
+							"port": "3023",
+							"path": [
+								"uri",
+								"rest",
+								"sample",
+								"tiger",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

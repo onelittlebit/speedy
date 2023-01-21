@@ -1,0 +1,42 @@
+name: getspeedyapp
+version: "3.8"
+
+services:
+  getspeedy:
+    image: 'techlittlebit/getspeedy:latest'
+    container_name: getspeedy
+    restart: on-failure
+    depends_on:
+       - postgres   
+    networks:
+      internal:
+        ipv4_address: 10.5.0.6
+    expose:
+      - 3023
+    ports:
+      - "3023:3023"
+    environment:
+      - DOCKER_OPTS=--dns 8.8.8.8
+
+  postgres:
+    image: 'postgres:latest'
+    container_name: postgresql
+    environment:
+      - POSTGRES_USER=speedy
+      - POSTGRES_PASSWORD=Speed#ter!23
+    networks:
+      internal:
+        ipv4_address: 10.5.0.7
+    expose:
+      - 5432
+    ports:
+        - "5432:5432"
+
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
+  
